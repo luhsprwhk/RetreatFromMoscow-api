@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 // Configure your Postgres connection
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/napoleongame',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/RFM-Game',
 });
 
 // Start a new game session
