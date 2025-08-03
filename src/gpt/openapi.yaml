@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  title: Napoleon Retreat Game API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /start-game/{username}:
+    post:
+      summary: Initialize a new game session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+      responses:
+        '200':
+          description: New game started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player_id:
+                    type: string
+                  state:
+                    $ref: '#/components/schemas/GameState'
+  /state/{playerId}:
+    get:
+      summary: Retrieve current game state
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current game state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player_id:
+                    type: string
+                  state:
+                    $ref: '#/components/schemas/GameState'
+  /update-state/{playerId}:
+    post:
+      summary: Update the player's game state
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                player_id:
+                  type: string
+                updates:
+                  type: object
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Game state updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player_id:
+                    type: string
+                  state:
+                    $ref: '#/components/schemas/GameState'
+  /log-event/{playerId}:
+    post:
+      summary: Log a game event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                player_id:
+                  type: string
+                day:
+                  type: integer
+                event_type:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Event logged
+components:
+  schemas:
+    GameState:
+      type: object
+      properties:
+        day:
+          type: integer
+        location:
+          type: string
+        honor:
+          type: integer
+        morale:
+          type: integer
+        rations:
+          type: integer
+        firewood:
+          type: integer
+        special_items:
+          type: object
+        men_alive:
+          type: integer
+        joubert_status:
+          type: string
+        weather:
+          type: string
