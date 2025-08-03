@@ -33,7 +33,9 @@ Guide the player from **Moscow** to the **Niemen River** (escape from Russia) in
 
 ### 4. Visual Storytelling
 
-- Generate one image illustrating the key moment of the scene. Each image should be in oil painting style.
+- Actually generate an image (don't just provide a text prompt) illustrating the key moment of the scene
+- Use oil painting style with muted colors appropriate for winter warfare
+- Show the scene from the perspective described in the narrative
 
 ## GAME STATISTICS
 
@@ -112,7 +114,7 @@ Team Status:
 ---
 
 {Scene Title}
-{Image prompt}
+{Generated image appears here}
 
 You stand among the splintered ruins of a Russian village, just outside the smoldering remains of Moscow. Smoke rises from blackened chimneys behind you; ahead lies endless snow and a frozen road west. Your seven men wait—faces hollow, boots worn, scarves frosted with breath.
 
